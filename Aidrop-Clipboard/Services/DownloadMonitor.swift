@@ -1,43 +1,7 @@
-import SwiftUI
+import Foundation
 import Combine
 import AppKit
 import UserNotifications
-
-// MARK: - Core Logic Services
-
-class ClipboardManager {
-    static let shared = ClipboardManager()
-    private let pasteboard = NSPasteboard.general
-    
-    func getClipboardContent() -> String? {
-        return pasteboard.string(forType: .string)
-    }
-    
-    func copyToClipboard(text: String) {
-        pasteboard.clearContents()
-        pasteboard.setString(text, forType: .string)
-    }
-    
-    func createSharedFile() -> URL? {
-        let text = getClipboardContent() ?? ""
-        let tempDirectory = FileManager.default.temporaryDirectory
-        let fileName = "copied_text.clipboard"
-        let fileURL = tempDirectory.appendingPathComponent(fileName)
-        try? text.write(to: fileURL, atomically: true, encoding: .utf8)
-        return fileURL
-    }
-}
-
-class AirDropService {
-    static let shared = AirDropService()
-    func shareFileViaAirDrop(fileURL: URL) {
-        let service = NSSharingService(named: .sendViaAirDrop)
-        let items: [Any] = [fileURL]
-        if let service = service, service.canPerform(withItems: items) {
-            service.perform(withItems: items)
-        }
-    }
-}
 
 class DownloadMonitor: ObservableObject {
     static let shared = DownloadMonitor()
@@ -50,12 +14,10 @@ class DownloadMonitor: ObservableObject {
     @Published var isMonitoringActive: Bool = false
     
     private var downloadsURL: URL {
-        // Obtenir le chemin mémorisé via NSOpenPanel s'il a été autorisé manuellement
         if let customPath = UserDefaults.standard.string(forKey: "customDownloadsPath") {
             return URL(fileURLWithPath: customPath)
         }
         
-        // S'échapper du bac à sable (Sandbox) pour trouver les vrais téléchargements
         let sandboxHome = NSHomeDirectory()
         if let range = sandboxHome.range(of: "/Library/Containers") {
             let realHome = String(sandboxHome[..<range.lowerBound])
@@ -71,7 +33,6 @@ class DownloadMonitor: ObservableObject {
     }
     
     func checkPermissions() {
-        // 1. Check Folder Access
         do {
             let _ = try fileManager.contentsOfDirectory(at: downloadsURL, includingPropertiesForKeys: nil)
             isFolderAuthorized = true
@@ -79,7 +40,6 @@ class DownloadMonitor: ObservableObject {
             isFolderAuthorized = false
         }
         
-        // 2. Check Notification Access
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             DispatchQueue.main.async {
                 self.isNotificationAuthorized = settings.authorizationStatus == .authorized
@@ -106,7 +66,6 @@ class DownloadMonitor: ObservableObject {
     }
     
     func startMonitoring() {
-        // Close existing source if any
         source?.cancel()
         
         let descriptor = open(downloadsURL.path, O_EVTONLY)
@@ -139,7 +98,6 @@ class DownloadMonitor: ObservableObject {
                             process(url)
                         }
                     } else {
-                        // Fallback if addedToDirectoryDate isn't available
                         let attrs2 = try? url.resourceValues(forKeys: [.creationDateKey])
                         if let creationDate = attrs2?.creationDate, now.timeIntervalSince(creationDate) < 15 {
                             process(url)
@@ -193,67 +151,5 @@ class DownloadMonitor: ObservableObject {
         if let scriptObject = NSAppleScript(source: appleScript) {
             scriptObject.executeAndReturnError(&error)
         }
-    }
-}
-
-class SharedNotificationManager {
-    static func requestPermission(completion: @escaping (Bool) -> Void = { _ in }) {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            if settings.authorizationStatus == .denied {
-                openSettings()
-                DispatchQueue.main.async { completion(false) }
-            } else {
-                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _ in
-                    DispatchQueue.main.async {
-                        completion(granted)
-                    }
-                }
-            }
-        }
-    }
-    
-    static func openSettings() {
-        if let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Notifications") {
-            NSWorkspace.shared.open(url)
-        }
-    }
-    
-    static func post(title: String, message: String) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = message
-        content.sound = .default
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
-        UNUserNotificationCenter.current().add(request)
-    }
-    
-    static func triggerAppleEventsPermission() {
-        let script = "tell application \"Finder\" to get version"
-        var error: NSDictionary?
-        if let appleScript = NSAppleScript(source: script) {
-            appleScript.executeAndReturnError(&error)
-        }
-    }
-}
-
-// MARK: - App Entry Point
-
-@main
-struct Aidrop_ClipboardApp: App {
-    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
-    @StateObject private var monitor = DownloadMonitor.shared
-    
-    init() {
-        // Soft check on launch
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
-    }
-    
-    var body: some Scene {
-        MenuBarExtra("Airdrop Clipboard", systemImage: "paperplane.fill") {
-            ContentView()
-                .environmentObject(monitor)
-        }
-        .menuBarExtraStyle(.window)
     }
 }

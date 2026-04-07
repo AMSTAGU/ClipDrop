@@ -250,6 +250,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Aidrop-ClipBoard-Appicon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Aidrop-Clipboard/Aidrop_Clipboard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -261,10 +262,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ClipDrop;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-								INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Cette permission est nécessaire pour détecter et copier automatiquement les textes reçus par AirDrop.";
-								CODE_SIGN_ENTITLEMENTS = "Aidrop-Clipboard/Aidrop_Clipboard.entitlements";
 				INFOPLIST_KEY_LSUIElement = YES;
-                                INFOPLIST_KEY_NSAppleEventsUsageDescription = "Cacher la fenêtre Finder";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Cacher la fenêtre Finder";
+				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Cette permission est nécessaire pour détecter et copier automatiquement les textes reçus par AirDrop.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -288,6 +288,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Aidrop-ClipBoard-Appicon";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Aidrop-Clipboard/Aidrop_Clipboard.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -299,10 +300,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ClipDrop;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-								INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Cette permission est nécessaire pour détecter et copier automatiquement les textes reçus par AirDrop.";
-								CODE_SIGN_ENTITLEMENTS = "Aidrop-Clipboard/Aidrop_Clipboard.entitlements";
 				INFOPLIST_KEY_LSUIElement = YES;
-                                INFOPLIST_KEY_NSAppleEventsUsageDescription = "Cacher la fenêtre Finder";
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Cacher la fenêtre Finder";
+				INFOPLIST_KEY_NSDownloadsFolderUsageDescription = "Cette permission est nécessaire pour détecter et copier automatiquement les textes reçus par AirDrop.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
