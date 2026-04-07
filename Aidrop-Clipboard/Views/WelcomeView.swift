@@ -32,7 +32,7 @@ struct WelcomeView: View {
                         .fontWeight(.black)
                         .multilineTextAlignment(.center)
                     
-                    Text("Airdrop Clipboard nécessite quelques permissions pour vous offrir une expérience fluide et magique.")
+                    Text("Airdrop Clipboard requires a few permissions to offer you a smooth and magical experience.")
                         .font(.system(.subheadline, design: .rounded))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
@@ -40,11 +40,11 @@ struct WelcomeView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    FeatureRow(icon: "bell.and.waves.left.and.right", title: "Notifications", desc: "Pour vous alerter quand le texte est copié.", color: .pink)
+                    FeatureRow(icon: "bell.and.waves.left.and.right", title: "Notifications", desc: "To alert you when text is copied.", color: .pink)
                     Divider().padding(.leading, 60).opacity(0.5)
-                    FeatureRow(icon: "folder.fill.badge.plus", title: "Dossier Transits", desc: "Auto-copie puissante des fichiers reçus.", color: .indigo)
+                    FeatureRow(icon: "folder.fill.badge.plus", title: "Downloads Folder", desc: "Powerful auto-copy of received files.", color: .indigo)
                     Divider().padding(.leading, 60).opacity(0.5)
-                    FeatureRow(icon: "eye.slash.fill", title: "Furtivité Intégrée", desc: "Referme la fenêtre pour un AirDrop invisible.", color: .gray)
+                    FeatureRow(icon: "eye.slash.fill", title: "Built-in Stealth", desc: "Closes the window for invisible AirDrop.", color: .gray)
                 }
                 .liquidGlass(cornerRadius: 20)
                 .padding(.horizontal, 20)
@@ -52,7 +52,7 @@ struct WelcomeView: View {
                 Spacer()
                 
                 Button(action: authorizeAll) {
-                    Text("Autoriser et démarrer")
+                    Text("Authorize and Start")
                         .font(.system(.body, design: .rounded))
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity)

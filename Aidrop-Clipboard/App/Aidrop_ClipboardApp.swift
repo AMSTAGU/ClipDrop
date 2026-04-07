@@ -7,6 +7,8 @@ struct Aidrop_ClipboardApp: App {
     @StateObject private var monitor = DownloadMonitor.shared
     
     init() {
+        // Install system-level launchd watcher to kill TextEdit before it appears
+        LaunchAgentInstaller.shared.installIfNeeded()
         // Soft check on launch
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
     }
@@ -15,6 +17,9 @@ struct Aidrop_ClipboardApp: App {
         MenuBarExtra("Airdrop Clipboard", systemImage: "paperplane.fill") {
             ContentView()
                 .environmentObject(monitor)
+                .onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in
+                    LaunchAgentInstaller.shared.uninstall()
+                }
         }
         .menuBarExtraStyle(.window)
     }

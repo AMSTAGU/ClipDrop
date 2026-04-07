@@ -17,9 +17,14 @@ class ClipboardManager {
     func createSharedFile() -> URL? {
         let text = getClipboardContent() ?? ""
         let tempDirectory = FileManager.default.temporaryDirectory
-        let fileName = "copied_text.clipboard"
-        let fileURL = tempDirectory.appendingPathComponent(fileName)
-        try? text.write(to: fileURL, atomically: true, encoding: .utf8)
+        // Use .aidropclip extension AND binary plist format.
+        // Binary plist starts with "bplist00" — macOS content-sniffing
+        // identifies it as a plist, NOT plain text, so TextEdit never opens it.
+        let fileURL = tempDirectory.appendingPathComponent("clipboard.aidropclip")
+        let payload: [String: String] = ["t": text]
+        if let data = try? PropertyListSerialization.data(fromPropertyList: payload, format: .binary, options: 0) {
+            try? data.write(to: fileURL)
+        }
         return fileURL
     }
 }

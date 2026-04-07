@@ -39,7 +39,7 @@ struct PermissionRowPremium: View {
                         HStack(spacing: 4) {
                             Image(systemName: "checkmark")
                                 .font(.system(size: 10, weight: .black))
-                            Text("Actif")
+                            Text("Active")
                         }
                         .font(.system(.caption, design: .rounded))
                         .fontWeight(.bold)
@@ -48,7 +48,7 @@ struct PermissionRowPremium: View {
                     .frame(width: 65, height: 26)
                 } else {
                     Button(action: action) {
-                        Text("Accorder")
+                        Text("Grant")
                             .font(.system(.caption, design: .rounded))
                             .fontWeight(.bold)
                             .padding(.horizontal, 14)

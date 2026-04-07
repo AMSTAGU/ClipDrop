@@ -21,7 +21,7 @@ struct SettingsView: View {
                 .liquidGlass(cornerRadius: 16)
                 
                 Spacer()
-                Text("Paramètres")
+                Text("Settings")
                     .font(.system(.headline, design: .rounded))
                     .fontWeight(.bold)
                 Spacer()
@@ -41,7 +41,7 @@ struct SettingsView: View {
                     
                     // GENERAL
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("GÉNÉRAL")
+                        Text("GENERAL")
                             .font(.system(.caption, design: .rounded))
                             .fontWeight(.bold)
                             .foregroundStyle(.secondary)
@@ -50,10 +50,10 @@ struct SettingsView: View {
                         VStack(spacing: 0) {
                             HStack {
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text("Lancer au démarrage")
+                                    Text("Launch at login")
                                         .font(.system(.subheadline, design: .rounded))
                                         .fontWeight(.medium)
-                                    Text("Démarrage automatique")
+                                    Text("Auto-start on boot")
                                         .font(.caption2)
                                         .foregroundStyle(.secondary)
                                 }
@@ -83,7 +83,7 @@ struct SettingsView: View {
                                     Text("Notifications")
                                         .font(.system(.subheadline, design: .rounded))
                                         .fontWeight(.medium)
-                                    Text("Alertes lors d'une copie")
+                                    Text("Alerts when copying")
                                         .font(.caption2)
                                         .foregroundStyle(.secondary)
                                 }
@@ -106,7 +106,7 @@ struct SettingsView: View {
                     
                     // PERMISSIONS
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("AUTORISATIONS")
+                        Text("PERMISSIONS")
                             .font(.system(.caption, design: .rounded))
                             .fontWeight(.bold)
                             .foregroundStyle(.secondary)
@@ -114,8 +114,8 @@ struct SettingsView: View {
                         
                         VStack(spacing: 0) {
                             PermissionRowPremium(
-                                title: "Téléchargements",
-                                subtitle: "Accès au dossier de réception",
+                                title: "Downloads",
+                                subtitle: "Access to reception folder",
                                 isAuthorized: monitor.isFolderAuthorized,
                                 icon: "arrow.down.doc.fill",
                                 iconColors: [.blue, .cyan],
