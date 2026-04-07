@@ -158,7 +158,9 @@ class DownloadMonitor: ObservableObject {
                 if !text.isEmpty {
                     ClipboardManager.shared.copyToClipboard(text: text)
                     self.lastReceivedText = text
-                    SharedNotificationManager.post(title: "AirDrop Clipboard", message: "Text reçu et copié !")
+                    if UserDefaults.standard.object(forKey: "notificationsEnabled") as? Bool ?? true {
+                        SharedNotificationManager.post(title: "AirDrop Clipboard", message: "Text reçu et copié !")
+                    }
                     try self.fileManager.removeItem(at: url)
                     self.closeAirDropWindows()
                 }
