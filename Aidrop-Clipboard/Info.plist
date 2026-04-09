@@ -18,29 +18,39 @@
 	<string>This permission is necessary to automatically detect and copy texts received via AirDrop.</string>
 	<key>NSAppleEventsUsageDescription</key>
 	<string>Hide the Finder window</string>
-	
+
+	<!-- Declare our custom UTI so macOS knows .aidropclip belongs exclusively to this app.
+	     Conforming to public.data (NOT public.plain-text) ensures TextEdit can never claim it. -->
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.amaury.aidropclip</string>
+			<key>UTTypeDescription</key>
+			<string>ClipDrop Clipboard File</string>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>aidropclip</string>
+					<string>clipboard</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>Plain Text</string>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+			<string>ClipDrop Clipboard File</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>public.plain-text</string>
-				<string>public.text</string>
-			</array>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>Clipboard File</string>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>aidropclip</string>
-				<string>clipboard</string>
+				<string>com.amaury.aidropclip</string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
