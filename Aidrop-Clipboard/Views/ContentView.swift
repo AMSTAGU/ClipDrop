@@ -8,12 +8,10 @@ struct ContentView: View {
     
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
-    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
-    
     var body: some View {
         ZStack {
             AmbientBackground()
-            
+
             if showingSettings {
                 SettingsView(showingSettings: $showingSettings, monitor: monitor)
                     .transition(.asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .move(edge: .trailing).combined(with: .opacity)))
@@ -21,17 +19,9 @@ struct ContentView: View {
                 mainContent
                     .transition(.asymmetric(insertion: .move(edge: .leading).combined(with: .opacity), removal: .move(edge: .leading).combined(with: .opacity)))
             }
-            
-            if !hasSeenOnboarding {
-                Color.black.opacity(0.3).ignoresSafeArea() // Backdrop
-                WelcomeView(hasSeenOnboarding: $hasSeenOnboarding, monitor: monitor)
-                    .transition(.opacity.combined(with: .scale(scale: 0.95)))
-                    .zIndex(10)
-            }
         }
-        .frame(width: 340) // Slightly wider for elegance
+        .frame(width: 340)
         .animation(.spring(response: 0.5, dampingFraction: 0.8), value: showingSettings)
-        .animation(.spring(response: 0.5, dampingFraction: 0.8), value: hasSeenOnboarding)
         .onAppear {
             refreshClipboard()
             monitor.startMonitoring()

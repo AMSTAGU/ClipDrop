@@ -7,7 +7,6 @@ struct ClipDropApp: App {
     // when it delivers a .aidropclip file via AirDrop.
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     @StateObject private var monitor = DownloadMonitor.shared
     
     init() {
