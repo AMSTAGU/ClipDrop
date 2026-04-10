@@ -32,7 +32,7 @@ struct WelcomeView: View {
                         .fontWeight(.black)
                         .multilineTextAlignment(.center)
                     
-                    Text("Airdrop Clipboard requires a few permissions to offer you a smooth and magical experience.")
+                    Text("ClipDrop requires a few permissions to offer you a smooth and magical experience.")
                         .font(.system(.subheadline, design: .rounded))
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)

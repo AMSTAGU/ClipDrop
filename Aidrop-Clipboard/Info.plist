@@ -4,34 +4,46 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>ClipDrop</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>ClipDrop Clipboard File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.amaury.aidropclip</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.Amaury.Aidrop-Clipboard</string>
+	<string>com.Amaury.ClipDrop</string>
 	<key>CFBundleName</key>
 	<string>ClipDrop</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>LSUIElement</key>
-	<true/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
-	<key>NSDownloadsFolderUsageDescription</key>
-	<string>This permission is necessary to automatically detect and copy texts received via AirDrop.</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSAppleEventsUsageDescription</key>
 	<string>Hide the Finder window</string>
-
-	<!-- Declare our custom UTI so macOS knows .aidropclip belongs exclusively to this app.
-	     Conforming to public.data (NOT public.plain-text) ensures TextEdit can never claim it. -->
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>This permission is necessary to automatically detect and copy texts received via AirDrop.</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
-			<key>UTTypeIdentifier</key>
-			<string>com.amaury.aidropclip</string>
-			<key>UTTypeDescription</key>
-			<string>ClipDrop Clipboard File</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
 			</array>
+			<key>UTTypeDescription</key>
+			<string>ClipDrop Clipboard File</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.amaury.aidropclip</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -40,22 +52,6 @@
 					<string>clipboard</string>
 				</array>
 			</dict>
-		</dict>
-	</array>
-
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>ClipDrop Clipboard File</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.amaury.aidropclip</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>Owner</string>
 		</dict>
 	</array>
 </dict>

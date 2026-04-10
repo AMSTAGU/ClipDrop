@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		3F9C97ED2F853AAC009D9489 /* Aidrop-Clipboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aidrop-Clipboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F9C97ED2F853AAC009D9489 /* ClipDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClipDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		3F9C97EE2F853AAC009D9489 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F9C97ED2F853AAC009D9489 /* Aidrop-Clipboard.app */,
+				3F9C97ED2F853AAC009D9489 /* ClipDrop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3F9C97EC2F853AAC009D9489 /* Aidrop-Clipboard */ = {
+		3F9C97EC2F853AAC009D9489 /* ClipDrop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F9C97F82F853AAD009D9489 /* Build configuration list for PBXNativeTarget "Aidrop-Clipboard" */;
+			buildConfigurationList = 3F9C97F82F853AAD009D9489 /* Build configuration list for PBXNativeTarget "ClipDrop" */;
 			buildPhases = (
 				3F9C97E92F853AAC009D9489 /* Sources */,
 				3F9C97EA2F853AAC009D9489 /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				3F9C97EF2F853AAC009D9489 /* Aidrop-Clipboard */,
 			);
-			name = "Aidrop-Clipboard";
+			name = ClipDrop;
 			packageProductDependencies = (
 			);
 			productName = "Aidrop-Clipboard";
-			productReference = 3F9C97ED2F853AAC009D9489 /* Aidrop-Clipboard.app */;
+			productReference = 3F9C97ED2F853AAC009D9489 /* ClipDrop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3F9C97E82F853AAB009D9489 /* Build configuration list for PBXProject "Aidrop-Clipboard" */;
+			buildConfigurationList = 3F9C97E82F853AAB009D9489 /* Build configuration list for PBXProject "ClipDrop" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F9C97EC2F853AAC009D9489 /* Aidrop-Clipboard */,
+				3F9C97EC2F853AAC009D9489 /* ClipDrop */,
 			);
 		};
 /* End PBXProject section */
@@ -326,7 +326,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3F9C97E82F853AAB009D9489 /* Build configuration list for PBXProject "Aidrop-Clipboard" */ = {
+		3F9C97E82F853AAB009D9489 /* Build configuration list for PBXProject "ClipDrop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F9C97F62F853AAD009D9489 /* Debug */,
@@ -335,7 +335,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F9C97F82F853AAD009D9489 /* Build configuration list for PBXNativeTarget "Aidrop-Clipboard" */ = {
+		3F9C97F82F853AAD009D9489 /* Build configuration list for PBXNativeTarget "ClipDrop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F9C97F92F853AAD009D9489 /* Debug */,

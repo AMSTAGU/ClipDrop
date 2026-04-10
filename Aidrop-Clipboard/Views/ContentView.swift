@@ -58,7 +58,7 @@ struct ContentView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Airdrop Clipboard")
+                    Text("ClipDrop")
                         .font(.system(.headline, design: .rounded))
                         .fontWeight(.bold)
                     Text("Ready to receive")

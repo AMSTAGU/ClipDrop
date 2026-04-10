@@ -2,7 +2,7 @@ import SwiftUI
 import UserNotifications
 
 @main
-struct Aidrop_ClipboardApp: App {
+struct ClipDropApp: App {
     // Wire our AppDelegate so macOS calls application(_:open:)
     // when it delivers a .aidropclip file via AirDrop.
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
@@ -16,7 +16,7 @@ struct Aidrop_ClipboardApp: App {
     }
     
     var body: some Scene {
-        MenuBarExtra("Airdrop Clipboard", systemImage: "paperplane.fill") {
+        MenuBarExtra("ClipDrop", systemImage: "paperplane.fill") {
             ContentView()
                 .environmentObject(monitor)
         }

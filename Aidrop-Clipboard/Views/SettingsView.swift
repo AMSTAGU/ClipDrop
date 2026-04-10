@@ -132,7 +132,7 @@ struct SettingsView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
                 
-                Text("Airdrop Clipboard v1.0")
+                Text("ClipDrop v1.0")
                     .font(.system(.caption2, design: .rounded))
                     .foregroundStyle(.tertiary)
                     .padding(.top, 10)
