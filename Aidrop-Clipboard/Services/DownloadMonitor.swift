@@ -7,7 +7,6 @@ class DownloadMonitor: ObservableObject {
     static let shared = DownloadMonitor()
     private let fileManager = FileManager.default
     private var source: DispatchSourceFileSystemObject?
-    private var pollingTimer: Timer?
 
     @Published var lastReceivedText: String?
     @Published var isFolderAuthorized: Bool = false
@@ -123,7 +122,6 @@ class DownloadMonitor: ObservableObject {
 
     func startMonitoring() {
         source?.cancel()
-        pollingTimer?.invalidate()
 
         let descriptor = open(downloadsURL.path, O_EVTONLY)
         guard descriptor >= 0 else {
@@ -138,12 +136,6 @@ class DownloadMonitor: ObservableObject {
         source?.setEventHandler { [weak self] in self?.checkForNewFiles() }
         source?.setCancelHandler { close(descriptor) }
         source?.resume()
-
-        // Layer 2b: 500ms polling timer as belt-and-suspenders.
-        // Some AirDrop deliveries land without triggering the directory event.
-        pollingTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
-            self?.checkForNewFiles()
-        }
 
         checkForNewFiles()
     }
